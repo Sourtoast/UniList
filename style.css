@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
+
+:root {
+	--gap: 40px;
+	--background-color: #fff;
+	--font-color: #000;
+	--link-color: #333;
+	--border-color: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: #212121;
+		--font-color: #fff;
+		--link-color: #ccc;
+		--border-color: #ccc;
+	}
+}
+
+body {
+	font-family: 'Lora', serif;
+	background-color: var(--background-color);
+	color: var(--font-color);
+}
+
+a {
+	color: var(--link-color);
+	text-decoration: none;
+}
+
+*[contenteditable] {
+	outline: none;
+}
+
+.hero {
+	display: grid;
+	place-items: center;
+	font-size: 1.5rem;
+	width: 100vw;
+	height: 100vh;
+	border-bottom: 1px dotted var(--font-color);
+}
+
+.hero__content {
+	padding: 100px;
+}
+
+.content {
+	margin: var(--gap);
+	display: grid;
+	gap: var(--gap);
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	position: relative;
+}
+
+.content::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: calc(100vW - 2 * var(--gap));
+	height: calc(100vh - var(--gap));
+	z-index: -1;
+}
+
+.list-box {
+	padding: calc(var(--gap) / 1.9);
+}
+
+.list-box__title {
+	margin: 0;
+	position: relative;
+	/* transition: opacity .2s ease; */
+}
+
+.list-box__title::after {
+	content: 'Bez tytułu';
+	display: block;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	opacity: 0;
+	transition: opacity .25s ease;
+}
+
+.list-box__title:not(.list-box__title--dirty)::after {
+	opacity: .2;
+}
+
+.list-box__list {
+	padding-left: 24px;
+	line-height: 1.7rem;
+}
+
+.list-box__list__item {
+	position: relative;
+}
+
+.list-box__list__item::after {
+	content: 'Punkt listy';
+	display: block;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	opacity: 0;
+	transition: opacity .25s ease;
+}
+
+.list-box__list__item:not(.list-box__list__item--dirty)::after {
+	opacity: .2;
+}
+
+.lists__add {
+	display: grid;
+	place-items: center left;
+}
+
+#lists__add__button {
+	margin: 0;
+	cursor: pointer;
+	font-size: 2em;
+	box-sizing: border-box;
+	border-radius: 5px;
+	padding: calc(var(--gap) / 1.9);
+	min-height: calc(2rem + 2 * var(--gap) / 1.9);
+	display: block;
+	transition: min-height .4s ease, transform .2s ease;
+	width: 100%;
+}
+
+#lists__add__button:hover {
+	background-color: #8888881e;
+	min-height: 100%;
+}
+
+#lists__add__button:active {
+	transform: scale(.8);
+}
+
+@media print {
+	body {
+		font-size: 1rem;
+	}
+
+	.hero, .lists__add {
+		display: none;
+	}
+
+	.content {
+		margin: 0;
+		grid-template-columns: repeat(auto-fit, 1fr);
+	}
+
+	.list-box {
+		padding: 0;
+	}
+}
