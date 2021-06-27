@@ -48,7 +48,7 @@ class ListBox {
 		const pointElements = [...this.listElement.children]
 		const currentPoints = []
 		pointElements.forEach(pointElement => {
-			const point = pointElement.textContent.trim()
+			const point = pointElement.textContent
 			currentPoints.push(point)
 			if(point) pointElement.classList.add('list-box__list__item--dirty')
 			else pointElement.classList.remove('list-box__list__item--dirty')
