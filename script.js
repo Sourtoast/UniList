@@ -1,8 +1,8 @@
-// addEventListener("paste", function(e) {
-// 	e.preventDefault();
-// 	const text = (e.originalEvent || e).clipboardData.getData('text/plain');
-// 	document.execCommand("insertHTML", false, text);
-// })
+addEventListener("paste", function(e) {
+	e.preventDefault();
+	const text = (e.originalEvent || e).clipboardData.getData('text/plain');
+	document.execCommand("insertHTML", false, text);
+})
 
 class ListBox {
 	constructor(list, mountElement, onChange = () => null, onDelete = () => null) {
